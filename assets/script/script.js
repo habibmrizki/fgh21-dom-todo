@@ -3,26 +3,18 @@ const form = document.getElementById("form-list");
 const data = [
   {
     text: " jogging",
-    time: "05 : 25 AM",
+    timestamp: 1720707645838,
   },
   {
     text: " study",
-    time: "09: 00 AM",
-  },
-  {
-    text: " sleep",
-    time: "14 : 00 AM",
-  },
-  {
-    text: " cycling",
-    time: "16 : 30 AM",
+    timestamp: 1720707645838,
   },
 ];
 
 const showList = () => {
   todoView.innerHTML = "";
   data.forEach((e, index) => {
-    console.log(data);
+    console.log(e.timestamp);
     const listcontent = document.createElement("div");
     listcontent.className = "todo-list";
 
@@ -51,6 +43,10 @@ const showList = () => {
     const textTime = document.createElement("div");
     textTime.className = "text-time";
     textTime.textContent = e.time;
+    const jam = new Date(e.timestamp).getHours();
+    const minute = new Date(e.timestamp).getMinutes();
+    textTime.textContent = jam + ":" + minute;
+    console.log(e.timestamp);
 
     textDateTodolist.appendChild(input);
     textDateTodolist.appendChild(label);

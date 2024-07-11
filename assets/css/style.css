@@ -10,7 +10,7 @@ body {
 .content-all {
   background-color: #fff;
   width: 500px;
-  height: 500px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   margin: 100px 500px 10px;
