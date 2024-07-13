@@ -1,16 +1,39 @@
 const todoView = document.getElementById("todolist");
 const form = document.getElementById("form-list");
-const data = [
+const contentPopup = document.getElementById("content-popup");
+const buttonOk = document.getElementById("button-ok");
+const formList = document.getElementById("form-list");
+const popup = document.querySelector(".popup");
+const btnDelete = document.getElementById("button-delete");
+
+let data = [
   {
     text: " jogging",
-    timestamp: 1720707645838,
-  },
-  {
-    text: " study",
-    timestamp: 1720707645838,
+    timestamp: new Date().getTime(),
   },
 ];
 
+const datas = localStorage.getItem("datas");
+if (datas !== null) {
+  data = JSON.parse(datas);
+}
+
+formList.addEventListener("submit", function (e) {
+  e.preventDefault();
+  contentPopup.classList.remove("hide");
+});
+
+buttonOk.addEventListener("click", function () {
+  contentPopup.classList.add("hide");
+});
+
+contentPopup.addEventListener("click", function (e) {
+  if (!popup.contains(e.target)) {
+    contentPopup.classList.add("hide");
+  }
+});
+
+console.log(data);
 const showList = () => {
   todoView.innerHTML = "";
   data.forEach((e, index) => {
@@ -46,7 +69,7 @@ const showList = () => {
     const jam = new Date(e.timestamp).getHours();
     const minute = new Date(e.timestamp).getMinutes();
     textTime.textContent = jam + ":" + minute;
-    console.log(e.timestamp);
+    // console.log(e.timestamp);
 
     textDateTodolist.appendChild(input);
     textDateTodolist.appendChild(label);
@@ -68,5 +91,14 @@ form.addEventListener("submit", (e) => {
     timestamp: new Date().getTime(),
     finish: false,
   });
+
+  window.localStorage.setItem("datas", JSON.stringify(data));
+
+  btnDelete.addEventListener("click", () => {
+    localStorage.removeItem("datas");
+    data = [];
+    showList();
+  });
+
   showList();
 });

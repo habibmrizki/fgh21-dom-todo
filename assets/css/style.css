@@ -1,5 +1,6 @@
 body {
   background-color: #f5be87;
+  margin: 0;
   position: relative;
 }
 
@@ -9,11 +10,12 @@ body {
 
 .content-all {
   background-color: #fff;
-  width: 500px;
-  height: 100%;
+  width: 650px;
+  height: auto;
   display: flex;
   flex-direction: column;
   margin: 100px 500px 10px;
+  position: absolute;
 }
 
 .content-todo {
@@ -90,8 +92,54 @@ button.submit-todolist:hover {
 
 .button-list input {
   width: 50%;
-  height: 22px;
+  height: 33px;
   border-radius: 10px;
   border: 1px solid #010101;
   padding-left: 10px;
+}
+
+.content-popup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: #150f088f;
+  height: 100vh;
+  position: absolute;
+}
+.popup {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  align-items: center;
+  background-color: #b6895b;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.popup-message {
+  font-size: 20px;
+}
+
+button.button-ok {
+  width: 200px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  height: 55px;
+  font-size: 20px;
+}
+
+button.button-ok:hover {
+  background: #010101;
+  color: #fff;
+  border: none;
+}
+
+.hide {
+  display: none;
 }
